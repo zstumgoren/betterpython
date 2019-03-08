@@ -1,6 +1,6 @@
 """
-In this second pass at the election_results.py script, we chop up the code into
-functions and add a few tests.
+In this second pass at the election_results.py script, 
+we chop up the code into functions.
 
 USAGE:
 
@@ -15,20 +15,22 @@ import csv
 import urllib.request
 from operator import itemgetter
 from collections import defaultdict
-from os.path import dirname, join
 
 
+# Primary function that orchestrates all steps in the pipeline
 def main():
-    # Download CSV of fake Virginia election results to root of project
-    path = join(dirname(dirname(__file__)), 'fake_va_elec_results.csv')
-    download_results(path)
-    # Process data
-    results = parse_and_clean(path)
-    summary = summarize(results)
-    write_csv(summary)
+    raw_data = 'fake_va_elec_results.csv'
+    summary_csv = 'summary_results.csv'
+    print("Downloading raw election data: {}".format(raw_data))
+    download_results(raw_data)
+    print("Cleaning data...")
+    results = parse_and_clean(raw_data)
+    print("Tallying votes and assigning winners...")
+    summarized_results = summarize(results)
+    print("Generating report: {}".format(summary_csv))
+    write_csv(summarized_results, summary_csv)
 
-
-#### PRIMARY FUNCS ####
+#### Helper Functions ####
 ### These funcs perform the major steps of our application ###
 
 def download_results(path):
@@ -127,15 +129,15 @@ def summarize(results):
     return summary
 
 
-def write_csv(summary):
+def write_csv(summary, csv_path):
     """Generates CSV from summary election results data
 
-    CSV is written to 'summary_results.csv' file, inside same directory
-    as this module.
+    USAGE:
+
+        write_summary(summary_dict, csv_path)
 
     """
-    outfile = join(dirname((__file__)), 'summary_results.csv')
-    with open(outfile, 'w') as fh:
+    with open(csv_path, 'w') as fh:
         # Limit output to cleanly parsed, standardized values
         fieldnames = [
             'date',
@@ -150,7 +152,7 @@ def write_csv(summary):
         ]
         writer = csv.DictWriter(fh, fieldnames, extrasaction='ignore', quoting=csv.QUOTE_MINIMAL)
         writer.writeheader()
-        for race, results in summary.items():
+        for results in summary.values():
             cands = results.pop('candidates')
             for cand in cands:
                 results.update(cand)
