@@ -15,7 +15,7 @@ OUTPUT:
 
 """
 import csv
-import urllib.request as urllib
+import urllib
 from operator import itemgetter
 from collections import defaultdict
 from os.path import dirname, join
@@ -85,7 +85,7 @@ for race_key, cand_results in results.items():
         first['winner'] = 'X'
 
     # Get race metadata from one set of results
-    result = list(cand_results.values())[0][0]
+    result = cand_results.values()[0][0]
     # Add results to output
     summary[race_key] = {
         'date': result['date'],

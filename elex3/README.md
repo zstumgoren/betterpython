@@ -9,16 +9,18 @@ In this section of the code, we organized the functions from `election_results.p
 
 ## Modules as scripts
 
-Each module one can be run individually as a script because we applied the `if __name__ == '__main__'` [idiom][] at bottom. For example, here are the last few lines of `parser.py`:
+Each module can be run individually as a script because we applied the `if __name__ == '__main__'` [idiom][] at bottom. For example, here are the last few lines of `parser.py`:
 
 ```
 if __name__ == '__main__':
-    parse_and_clean('fake_va_elec_results.csv')
+    import json
+    data = parse_and_clean('fake_va_elec_results.csv')
+    print(json.dumps(data, indent=4))
 ```
 
 ## Tying it together
 
-We also created a script called `run_pipeline.py`, which imports our re-usable functions from each module and runs all the steps in the pipeline. 
+We also created the script called `run_pipeline.py`, which imports our re-usable functions from each module and runs all the steps in the pipeline. 
 
 Such a script is what would likely run as a scheduled job, perhaps as part of a daily web scrape.
 

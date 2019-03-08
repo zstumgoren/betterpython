@@ -12,7 +12,7 @@ OUTPUT:
 
 """
 import csv
-import urllib.request
+import urllib
 from operator import itemgetter
 from collections import defaultdict
 
@@ -36,7 +36,7 @@ def main():
 def download_results(path):
     """Download CSV of fake Virginia election results from GDocs"""
     url = "https://docs.google.com/spreadsheet/pub?key=0AhhC0IWaObRqdGFkUW1kUmp2ZlZjUjdTYV9lNFJ5RHc&output=csv"
-    urllib.request.urlretrieve(url, path)
+    urllib.urlretrieve(url, path)
 
 def parse_and_clean(path):
     """Parse downloaded results file and perform various data clean-ups
@@ -116,7 +116,7 @@ def summarize(results):
             first['winner'] = 'X'
 
         # Get race metadata from one set of results
-        result = list(cand_results.values())[0][0]
+        result = cand_results.values()[0][0]
         # Add results to output
         summary[race_key] = {
             'all_votes': all_votes,

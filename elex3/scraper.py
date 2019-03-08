@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from urllib.request import urlretrieve
+from urllib import urlretrieve
 
 
 def download_results(path):

@@ -43,4 +43,6 @@ def parse_and_clean(path):
     return results
 
 if __name__ == '__main__':
-    parse_and_clean('fake_va_elec_results.csv')
+    import json
+    data = parse_and_clean('fake_va_elec_results.csv')
+    print(json.dumps(data, indent=4))
