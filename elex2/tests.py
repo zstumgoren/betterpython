@@ -4,12 +4,12 @@ from os.path import dirname, join
 import pytest
 
 # Use relative import to reach into parent directory
-from ..election_results import parse_and_clean
-from ..election_results import summarize
+from election_results import parse_and_clean
+from election_results import summarize
 
 ### Some helper functions/fixtures to load data for test
 def load_json(path):
-    json_file = open(join(dirname(__file__), path), 'r')
+    json_file = open(join(dirname(__file__), 'fixtures', path), 'r')
     return json.load(json_file)
 
 @pytest.fixture
@@ -22,7 +22,7 @@ def results():
 ### TESTS
 def test_name_parsing():
     "Parser should split full candidate name into first and last names"
-    path = join(dirname(__file__), 'sample_results.csv')
+    path = join(dirname(__file__), 'fixtures/sample_results.csv')
     results = parse_and_clean(path)
     race_key = 'President'
     cand_key = 'GOP-Smith, Joe'
