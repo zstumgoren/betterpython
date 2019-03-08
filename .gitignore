@@ -1,5 +1,7 @@
 # Mac
 .DS_Store
+*.csv
+*.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
