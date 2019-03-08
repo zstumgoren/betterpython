@@ -1,6 +1,5 @@
 import json
 from os.path import dirname, join
-from unittest import TestCase
 
 import pytest
 
