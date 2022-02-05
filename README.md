@@ -111,10 +111,10 @@ Now head on to Phase 2 and see if we came up with a similar solution.
 
 ### Phase 2
 
-Navigate to the `elex2` folder on your command line and run the script.
+Navigate to the `elex2/` folder on your command line and run the script.
 
 ```python
-cd elex2
+cd elex2/
 python election_results.py
 ```
 
@@ -136,9 +136,8 @@ Earlier we described functions as action verbs. It can be helpful
 to think of modules as nouns or containers.
 
 For example, you might consider creating a module called `scraper.py`
-and putting your `download` function in that module. Then you can simply
-call `download` at the bottom of the file in the same way that we called
-`main`.
+and put your `download` function in that module. Then you can call `download` 
+at the bottom of the file in the same way that we called `main`.
 
 ```python
 # scraper.py
@@ -159,7 +158,7 @@ python scraper.py
 
 Rinse and repeat this process until `election_results.py` no longer
 exists and you have two or more new modules that work that can perform each step in
-your the data "pipeline".
+your data "pipeline".
 
 Notice that you can now run each of the steps (aka modules) independently? In this toy example, that may not seem like a big deal, but consider
 how happy you'll be if the download process takes a minute, or 10 minutes, or...
@@ -168,7 +167,7 @@ Giving yourself the ability to execute discrete steps in your pipeline can be a 
 
 But here's the downside: Now you need to remember or document the order in which to run the scripts. Wouldn't it be nice if you could run them all at once in addition to one at a time?
 
-The good news is that there's a simple way to do that: Simply create one final module to import and run the functions from your new modules.
+The good news is that there's a simple way to do that: Create one final module to import and run the functions from your new modules.
 
 #### Interlude
 
@@ -192,7 +191,7 @@ if __name__ == '__main__':
     download(url)
 ```
 
-With the above change, you can now (1) trigger the download by running `python scraper.py` *and* (2) import `download` from another module **without** triggering the download automatically.
+With the above change, you can now (1) trigger the download by running `python scraper.py` *or* (2) import `download` from another module **without** triggering the download automatically.
 
 So you can do something such as below without causing the download to occur twice.
 
