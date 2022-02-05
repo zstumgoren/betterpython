@@ -157,10 +157,44 @@ cd elex2/
 python scraper.py
 ```
 
-You should *not* be writing any new code except `import` statements.
+Rinse and repeat this process until `election_results.py` no longer
+exists and you have two or more new modules that work that can perform each step in
+your the data "pipeline".
 
-For example, if you have a new module that requires the `download`
-function, you would add the following to the top of that module:
+Notice that you can now run each of the steps (aka modules) independently? In this toy example, that may not seem like a big deal, but consider
+how happy you'll be if the download process takes a minute, or 10 minutes, or...
+
+Giving yourself the ability to execute discrete steps in your pipeline can be a huge time-saver!
+
+But here's the downside: Now you need to remember or document the order in which to run the scripts. Wouldn't it be nice if you could run them all at once in addition to one at a time?
+
+The good news is that there's a simple way to do that: Simply create one final module to import and run the functions from your new modules.
+
+#### Interlude
+
+To create an orchestrator module, or script, that can import your other code and run it all at once is easy. But it's not a bad idea to throw one final Python idiom into the mix: `if __name__ == '__main__':`. 
+
+This is a gnarly bit of syntax that is widely used. It lets you [create "executable" modules that contain importable code](https://docs.python.org/3.8/tutorial/modules.html#executing-modules-as-scripts). It gives you the ability to execute some default behavior such as `download` when you run `python scraper.py`. But it also allows you to import code (ie `download`) from the module **without triggering that default behavior.**
+
+It's a fancy little two-step that lets you avoid running the same code twice if you're importing functionality from one module and using it another.
+
+Let's add this new idiom to `scraper.py`:
+
+```python
+# scraper.py
+
+def download(url):
+    # donwload and stuff
+    pass
+
+if __name__ == '__main__':
+    url = "https://example.com" # Clearly this is an example and not the real URL!
+    download(url)
+```
+
+With the above change, you can now (1) trigger the download by running `python scraper.py` *and* (2) import `download` from another module **without** triggering the download automatically.
+
+So you can do something such as below without causing the download to occur twice.
 
 ```python
 # some_other_module.py
@@ -169,18 +203,9 @@ from scraper import download
 # use the download function and do other stuff
 ```
 
-Rinse and repeat this process until `election_results.py` no longer
-exists and you have two or more new modules that work in tandem.
+The above strategy may seem like overkill for our toy example, but it's a huge win when dealing with larger data files or high volumes of downloads (or both).
 
-Are you done? In other words, is the code reorganized into modules and still producing the same results?
-
-Wonderful! Grab another glass of vino and enjoy the fruits of your
-labor.
-
-Is the code more understandable now that you've reorganized it into
-different modules?
-
-Before you compare it to our finished product in `elex3/`, let the perfectionist in you run wild and consider adding one final module to import and run the code from your other modules. Details are below in the `Bonus points` section.
+Apply this strategy to all of your modules and you've set the stage to create an "orchestrator" module that can run your entire data pipeline in the most efficient way possible. That's up next in the below `Bonus Points` section. Keep on truckin!
 
 ### Bonus points
 
@@ -200,9 +225,9 @@ together?
 Have you noticed a newfound freedom to run the entire pipeline at once or each step individually?
 
 Before you run off for that last glass of wine, compare your code to our
-final version in `elex3`. In particular, check out the bottom of the
-modules for a neat trick that can make your shiny new data pipelines
-even more flexible.
+final version in `elex3`.
+
+Yours is better than ours right? Good. We think so too.
 
 ## Parting words
 
