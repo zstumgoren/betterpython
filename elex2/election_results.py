@@ -35,7 +35,7 @@ def main():
 
 def download_results(path):
     """Download CSV of fake Virginia election results from GDocs"""
-    url = "https://docs.google.com/spreadsheet/pub?key=0AhhC0IWaObRqdGFkUW1kUmp2ZlZjUjdTYV9lNFJ5RHc&output=csv"
+    url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR66f495XUWKbhP48Eh1PtQ9mN_pbHTh2m-nma9sv0banZSORUJKcugDNKFzuUBhJ5tcsUMN6moYAHb/pub?gid=0&single=true&output=csv"
     urllib.request.urlretrieve(url, path)
 
 def parse_and_clean(path):
@@ -52,7 +52,7 @@ def parse_and_clean(path):
     reader = csv.DictReader(open(path, 'r'))
 
     # Use defaultdict to automatically create non-existent keys with an empty dictionary as the default value.
-    # See https://pydocs2cn.readthedocs.org/en/latest/library/collections.html#defaultdict-objects
+    # See https://docs.python.org/3.8/library/collections.html#collections.defaultdict
     results = defaultdict(dict)
 
     # Initial data clean-up

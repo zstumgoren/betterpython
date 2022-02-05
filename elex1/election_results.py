@@ -22,7 +22,7 @@ from os.path import dirname, join
 
 
 # Download CSV of fake Virginia election results to root of project
-url = "https://docs.google.com/spreadsheet/pub?key=0AhhC0IWaObRqdGFkUW1kUmp2ZlZjUjdTYV9lNFJ5RHc&output=csv"
+url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR66f495XUWKbhP48Eh1PtQ9mN_pbHTh2m-nma9sv0banZSORUJKcugDNKFzuUBhJ5tcsUMN6moYAHb/pub?gid=0&single=true&output=csv"
 filename = join(dirname(dirname(__file__)), 'fake_va_elec_results.csv')
 urllib.urlretrieve(url, filename)
 
@@ -30,7 +30,7 @@ urllib.urlretrieve(url, filename)
 reader = csv.DictReader(open(filename, 'r'))
 
 # Use defaultdict to automatically create non-existent keys with an empty dictionary as the default value.
-# See https://pydocs2cn.readthedocs.org/en/latest/library/collections.html#defaultdict-objects
+# See https://docs.python.org/3.8/library/collections.html#collections.defaultdict
 results = defaultdict(dict)
 
 # Initial data clean-up

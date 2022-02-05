@@ -20,7 +20,7 @@ def parse_and_clean(path):
     reader = csv.DictReader(open(path, 'r'))
 
     # Use defaultdict to automatically create non-existent keys with an empty dictionary as the default value.
-    # See https://pydocs2cn.readthedocs.org/en/latest/library/collections.html#defaultdict-objects
+    # See https://docs.python.org/3.8/library/collections.html#collections.defaultdict
     results = defaultdict(dict)
 
     # Initial data clean-up
