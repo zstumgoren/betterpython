@@ -83,7 +83,7 @@ more readable **while still producing the exact same results.**
 ### Bonus points
 
 It's common in many programming languages to create a
-`main` function, which is used to call so-called "helper" functions and chain them together.
+`main` function, which is used to call "helper" functions and chain them together.
 
 For example, the `main` function could call `download`, passing it the URL for the source data and saving the local file path returned by `download` to a variable. `main` can then pass that variable to the next function in your program.
 
