@@ -218,7 +218,7 @@ We created an orchestrator script called `run_pipeline.py` and it contains, amon
 But no more hints. Try creating your own `run_pipeline.py`. We'll wait...
 
 OK, so you're done. Does your new orchestrator module improve the code? In particular, does it make it easier to
-understand the separate steps in the overall pipeline and how they fit together? Does it serve as entry point into your code and document how the disparate pieces fit together?
+understand the separate steps in the overall pipeline and how they fit together?
 
 Have you noticed a newfound freedom to run the entire pipeline at once or each step individually?
 
