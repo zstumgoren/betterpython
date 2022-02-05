@@ -159,10 +159,10 @@ Rinse and repeat this process until `election_results.py` no longer
 exists and you have two or more new modules that can perform each step in
 your data "pipeline".
 
-Notice that you can now run each of the steps (aka modules) independently? In this toy example, that may not seem like a big deal, but consider
+Notice that you can now run each of the steps (aka modules) independently? That may not seem like a big deal in this toy example, but consider
 how happy you'll be if the download process takes a minute, or 10 minutes, or...
 
-You've just given yourself the freedom to skip the scraping part of the pipeline. Yep, we realize that isn't the normal use case. Day-to-day (once your code is complete and working as expected), you'll typically want to run the whole pipeline start to finish. There's likely no reason to skip any steps in the pipeline. But when you're *writing* or *developing* the code, giving yourself the ability to execute discrete steps in the pipeline -- and skip earlier steps that you've completed -- can be a huge time-saver! Plus, you get all those fuzzy warm feelings from having well-organized, understandable code.
+You've just given yourself the freedom to skip the scraping part of the pipeline (remember that workflow win we alluded to [up top](#overview)?). Yep, we realize that isn't the normal use case. Day-to-day (once your code is complete and working as expected), you'll typically want to run the whole pipeline start to finish. There's likely no reason to skip any steps in the pipeline. But when you're *writing* or *developing* the code, giving yourself the ability to execute discrete steps in the pipeline -- and skip earlier steps that you've completed -- can be a huge time-saver! Plus, you get all those warm fuzzy feelings from having well-organized, understandable code.
 
 But here's the downside: Now you need to remember or document the order in which to run the scripts. Wouldn't it be nice if you could run them all at once in addition to one at a time?
 
