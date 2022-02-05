@@ -157,7 +157,7 @@ python scraper.py
 ```
 
 Rinse and repeat this process until `election_results.py` no longer
-exists and you have two or more new modules that work that can perform each step in
+exists and you have two or more new modules that can perform each step in
 your data "pipeline".
 
 Notice that you can now run each of the steps (aka modules) independently? In this toy example, that may not seem like a big deal, but consider
