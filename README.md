@@ -16,7 +16,7 @@ Tutorial on using functions and modules to improve code readability and design, 
 [Write Better Python]: https://tinyurl.com/betterpython
 [NICAR 2019]: https://www.ire.org/events-and-training/event/3433/4087/
 
-The tutorial steps through several iterations of code that downloads, cleans and summarizes some [fake election data][]. Along the way we add some basic test coverage so we can more confidently change the code.
+The tutorial steps through several iterations of code that downloads, cleans and summarizes some [fake election data][].
 
 The repo contains three different versions of the code:
 
