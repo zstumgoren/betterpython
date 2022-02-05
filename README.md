@@ -9,12 +9,7 @@
 
 ## Overview
 
-Tutorial on using functions and modules to improve code readability and design, as part of a multi-step data pipeline.
-
-> Created for the [Write Better Python][] session at [NICAR 2019] conference in Newport Beach, CA.
-
-[Write Better Python]: https://tinyurl.com/betterpython
-[NICAR 2019]: https://www.ire.org/events-and-training/event/3433/4087/
+This is a tutorial on using Python functions and modules to improve code readability and design, as part of a multi-step data pipeline. As a side benefit, you get some big workflow wins. Pretty nifty, right?
 
 The tutorial steps through several iterations of code that downloads, cleans and summarizes some [fake election data][].
 
@@ -23,6 +18,10 @@ The repo contains three different versions of the code:
 * `elex1/election_results.py` - a single gnarly, tear-inducing script
 * `elex2/election_results.py` - a reworking of the original script in `elex1/` that uses functions to better organize the code
 * [elex3](elex3/README.md) - a series of modules that can be run as stand-alone scripts, and an "orchestrator" script to run the full pipeline (`elex3/run_pipeline.py`)
+
+> Note: this tutorial was originally created for the [Write Better Python][] session at the the NICAR 2019 conference in Newport Beach, CA.
+
+[Write Better Python]: https://tinyurl.com/betterpython
 
 ## Setup
 
@@ -163,7 +162,7 @@ your data "pipeline".
 Notice that you can now run each of the steps (aka modules) independently? In this toy example, that may not seem like a big deal, but consider
 how happy you'll be if the download process takes a minute, or 10 minutes, or...
 
-Giving yourself the ability to execute discrete steps in your pipeline can be a huge time-saver!
+You've just given yourself the freedom to skip the scraping part of the pipeline. Yep, we realize that isn't the normal use case. Day-to-day (once your code is complete and working as expected), you'll typically want to run the whole pipeline start to finish. There's likely no reason to skip any steps in the pipeline. But when you're *writing* or *developing* the code, giving yourself the ability to execute discrete steps in the pipeline -- and skip earlier steps that you've completed -- can be a huge time-saver! Plus, you get all those fuzzy warm feelings from having well-organized, understandable code.
 
 But here's the downside: Now you need to remember or document the order in which to run the scripts. Wouldn't it be nice if you could run them all at once in addition to one at a time?
 
