@@ -18,10 +18,10 @@ Tutorial on using functions and modules to improve code readability and design, 
 
 The tutorial steps through several iterations of code that downloads, cleans and summarizes some [fake election data][]. Along the way we add some basic test coverage so we can more confidently change the code.
 
-The repo contains through different versions of the code:
+The repo contains three different versions of the code:
 
 * `elex1/election_results.py` - a single gnarly, tear-inducing script
-* `elex2/election_results.py` - a single script that uses functions and adds some test coverage
+* `elex2/election_results.py` - a reworking of the original script in `elex1/` that uses functions to better organize the code
 * [elex3](elex3/README.md) - a series of modules that can be run as stand-alone scripts, and an "orchestrator" script to run the full pipeline (`elex3/run_pipeline.py`)
 
 ## Setup
@@ -37,20 +37,16 @@ The repo contains through different versions of the code:
 
 Carefully review `elex1/election_results.py`.
 
-Try running the code:
+Open a terminal and try running the code:
 
 ```bash
-cd elex1
+cd elex1/
 python election_results.py
 ```
 
-Review the CSVs it generates.
+Review the CSVs it generates. Can you figure out what the code is doing? If not, don't worry. That's the point! The code is super convoluted and intended to make your brain hurt!
 
-Can you figure out what the code is doing?
-
-If not, don't worry. That's the point! The code is super convoluted and intended to make your brain hurt!
-
-Your mission is to rewrite this code so that a mere mortal can read and quickly understand it.
+**Your mission is to rewrite this code so that a mere mortal can read and quickly understand it.**
 
 In this first phase, we highly recommend printing the code -- yes printing ! -- on large paper in color (if you have the luxury).
 
@@ -89,7 +85,7 @@ more readable **while still producing the exact same results.**
 It's common in many programming languages to create a
 `main` function, which is used to call so-called "helper" functions and chain them together.
 
-For example, `main` function could call `download`, passing it the URL for the source data and saving the local file path returned by `download` to a variable. `main` can then pass that variable to the next function in your program.
+For example, the `main` function could call `download`, passing it the URL for the source data and saving the local file path returned by `download` to a variable. `main` can then pass that variable to the next function in your program.
 
 Take a second pass at your program and try using `main` to call and chain together your new "helper" functions.
 
@@ -98,11 +94,12 @@ improve it's readability. Just don't forget to call `main` at the
 bottom of your script:
 
 ```python
+# elex1/election_results.py
+# The new and improved version!
 
-# Bunch of helper functions and the main function
-# go higher up in the script
+# Higher up in the script you should have helper functions and a main function
 
-# Call main at the bottom of the script
+# Just don't forget! Call main at the bottom of the script
 main()
 ```
 
@@ -135,7 +132,7 @@ Now we're going to further improve our code by organizing our functions into wel
 
 Ok, ready? In this section, your job is to simply create well-named
 modules and move your helper functions into the appropriate module.
-Earlier we descriged functions as action verbs. It can be helpful
+Earlier we described functions as action verbs. It can be helpful
 to think of modules as nouns or containers.
 
 For example, you might consider creating a module called `scraper.py`
@@ -149,6 +146,15 @@ call `download` at the bottom of the file in the same way that we called
 def download(url):
   # do stuff to download
   pass
+  
+download()
+```
+
+Then in the terminal:
+
+```bash
+cd elex2/
+python scraper.py
 ```
 
 You should *not* be writing any new code except `import` statements.
